@@ -8,19 +8,23 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/main_textview_greeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:padding="16dp"
         android:text="Bienvenue dans TopQuiz. Quel est votre prénom" />
     <EditText
+        android:id="@+id/main_edittext_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-android:gravity="center"       android:padding="10dp"
-    android:hint="Votre nom"/>
+        android:gravity="center"
+        android:padding="10dp"
+        android:hint="Votre nom"/>
 
     <Button
+        android:id="@+id/main_button_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
