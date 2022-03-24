@@ -1,5 +1,5 @@
-package com.example.openclassroom;
-
+package com.example.openclassroom.controller;
+//Log.d(TAG, "onStart() called");
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.openclassroom.R;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button mPlayButtom;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+       // Log.d(TAG, "onStart() called");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -51,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-            //Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
+//                Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
 
-            // startActivity(gameActivityIntent);
+  // startActivity(gameActivityIntent);
                 
             }
         });
