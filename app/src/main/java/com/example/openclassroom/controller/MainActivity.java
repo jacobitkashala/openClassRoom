@@ -1,6 +1,5 @@
 package com.example.openclassroom.controller;
 //Log.d(TAG, "onStart() called");
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.openclassroom.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int REQUEST_CODE_GAME_ACTIVITY=42;
 
     private Button mPlayButtom;
     private EditText mNameEditText;
@@ -49,17 +52,40 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
         mPlayButtom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
-
-  // startActivity(gameActivityIntent);
-                
+                startActivityForResult(new Intent(MainActivity.this, GameActivity.class), REQUEST_CODE_GAME_ACTIVITY);
+                /*
+                *
+                 Intent gameActivityIntent=new Intent(MainActivity.this,GameActivity.class);
+                 startActivity(gameActivityIntent);
+                 *
+                 * */
             }
         });
+        /*
+        PlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // The user just clicked
+            }
+        });
+
+
+        mPlayButtom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  startActivityForResult(new Intent(MainActivity.this, GameActivity.class), REQUEST_CODE_GAME_ACTIVITY);
+                startActivityForResult(new Intent(MainActivity.this,GameActivity.class),REQUEST_CODE_GAMA_ACTIVITY);
+
+                // Intent gameActivityIntent = new Intent(MainActivity.this, GameActivity.class);
+
+                // startActivity(gameActivityIntent);
+
+            }
+        });*/
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.openclassroom.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class QuestionBank {
@@ -8,10 +9,18 @@ public class QuestionBank {
     private int mQuestionIndex;
 
     public QuestionBank(List<Question> questionList) {
-        // Shuffle the question list before storing it
+        mQuestionList = questionList;
+
+        Collections.shuffle(mQuestionList);
     }
 
-    public void getNextQuestion() {
-        // Loop over the questions and return a new one at each call
+    public Question getCurrentQuestion() {
+        return mQuestionList.get(mQuestionIndex);
     }
+
+    public Question getNextQuestion() {
+        mQuestionIndex++;
+        return getCurrentQuestion();
+    }
+
 }

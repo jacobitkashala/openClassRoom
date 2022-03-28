@@ -29,7 +29,7 @@
         android:layout_weight="1"
         android:padding="16dp"
         android:textSize="20sp"
-        tools:text="Answer1" />
+        tools:text="Reponse1" />
 
     <Button
         android:id="@+id/game_activity_button_2"
@@ -40,7 +40,7 @@
         android:layout_weight="1"
         android:padding="16dp"
         android:textSize="20sp"
-        tools:text="Answer2" />
+        tools:text="Repons2" />
 
     <Button
         android:id="@+id/game_activity_button_3"
@@ -51,7 +51,7 @@
         android:layout_weight="1"
         android:padding="16dp"
         android:textSize="20sp"
-        tools:text="Answer3" />
+        tools:text="Reponse3" />
 
     <Button
         android:id="@+id/game_activity_button_4"
@@ -62,5 +62,5 @@
         android:layout_weight="1"
         android:padding="16dp"
         android:textSize="20sp"
-        tools:text="Answer4" />
+        tools:text="Reponse4" />
 </LinearLayout>
