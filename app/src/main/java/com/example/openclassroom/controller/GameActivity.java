@@ -2,12 +2,16 @@ package com.example.openclassroom.controller;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -23,10 +27,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mTextViewQuestion;
 
+    public static final String BUNDLE_STATE_SCORE = "BUNDLE_STATE_SCORE";
+    public static final String BUNDLE_STATE_QUESTION = "BUNDLE_STATE_QUESTION";
+
+
     private Button AnswerOneButton;
     private Button AnswerTwoButton;
     private Button AnswerTreeButton;
     private Button AnswerFourButton;
+    public static final String BUNDLE_EXTRA_SCORE = "BUNDLE_EXTRA_SCORE";
+
+    private boolean mEnableTouchEvents;
 
      QuestionBank mQuestionBank;
 
@@ -45,8 +56,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         AnswerTreeButton=findViewById(R.id.game_activity_button_3);
         AnswerFourButton=findViewById(R.id.game_activity_button_4);
 
+        mEnableTouchEvents=true;
+
         mRemainingQuestionCount=4;
         mScore=0;
+        /*
+        if(savedInstanceState==null){
+            mRemainingQuestionCount=savedInstanceState.getInt(BUNDLE_STATE_QUESTION);
+            mScore=savedInstanceState.getInt(BUNDLE_STATE_SCORE);
+        }else {
+            mRemainingQuestionCount=4;
+            mScore=0;
+        }*/
+
         // Utilise le même écouteur pour les quatre boutons.
         // La valeur de l'identifiant de la vue sera utilisée pour distinguer le bouton déclenché
 
@@ -77,10 +99,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(BUNDLE_STATE_SCORE,mScore);
+        outState.putInt(BUNDLE_STATE_QUESTION,mRemainingQuestionCount);
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return mEnableTouchEvents && super.dispatchTouchEvent(ev);
+    }
+
+    @Override
     public void onClick(View v ) {
         int index;
-
-        mRemainingQuestionCount--;
 
         if(v==AnswerOneButton){
             //System.out.println("0");
@@ -103,31 +136,50 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             mTextViewQuestion.setText("Correct");
             mScore=mScore+4;
             Toast.makeText(this, "Correct!", Toast.LENGTH_SHORT).show();
-           // mScore++;
+            // mScore++;
         } else {
             mTextViewQuestion.setText("Incorrect");
             Toast.makeText(this, "Incorrect!", Toast.LENGTH_SHORT).show();
         }
 
-        if(mRemainingQuestionCount==0){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        mEnableTouchEvents=false;
 
+        new Handler().postDelayed(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        mRemainingQuestionCount--;
+                        if(mRemainingQuestionCount==0){
+                            endGame();
+                        }else {
+                        displayQuestion(mQuestionBank.getNextQuestion());
+                        }
+
+                        mEnableTouchEvents= true;
+                    }
+                },2000);
+
+
+    }
+
+    private  void  endGame(){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Merci d'avoir participer a notre jeux!")
                     .setMessage("Votre Score est de :" + mScore)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            finish();
+                            Intent intent = new Intent();
+                            intent.putExtra(BUNDLE_EXTRA_SCORE, mScore);
+                            setResult(RESULT_OK, intent);
+                            finish();// ce pour arrêter une activité
                         }
                     })
                     .create()
                     .show();
-        }else {
-            displayQuestion(mQuestionBank.getNextQuestion());
-        }
-        ;
-    }
 
+    }
 
     private QuestionBank generateQuestionBank() {
         Question question1 = new Question(
