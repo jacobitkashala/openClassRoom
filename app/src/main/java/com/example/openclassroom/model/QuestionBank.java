@@ -1,9 +1,10 @@
 package com.example.openclassroom.model;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class QuestionBank {
+public class QuestionBank implements Serializable {
 
     private List<Question> mQuestionList;
     private int mQuestionIndex;
