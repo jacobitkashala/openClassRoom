@@ -18,6 +18,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button mPlayButtom;
     private EditText mNameEditText;
+
+
+
     private TextView mGreetingTextView;
 
     private static final String SHARED_PREF_USER_INFO = "SHARED_PREF_USER_INFO";
@@ -36,18 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String SHARED_PREF_USER_INFO_SCORE = "SHARED_PREF_USER_INFO_SCORE";
 
 
-    /*
-        ActivityResultLauncher<Intent> activityLaucher=registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                       Log.d("TAG","onActivityResult");
-                    }
-                }
-
-        );
-    */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
         String firstName=getSharedPreferences(SHARED_PREF_USER_INFO,MODE_PRIVATE)
                 .getString(SHARED_PREF_USER_INFO_NAME,null);
-       // Log.e("TAG","I shouldn't be here");
-        //Log.e(TAG,"I shouldn't be here");
+       System.out.println("my name "+firstName);
+        //Log.e("TAG","my name"+firstName);
+
         mNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -71,11 +64,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // System.out.println("nn"+s);
 
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+               // System.out.println("nn "+s);
                 mPlayButtom.setEnabled(!s.toString().isEmpty());
 
             }
@@ -84,10 +79,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // System.out.println("name "+mNameEditText.getText());
+
                 getSharedPreferences(SHARED_PREF_USER_INFO,MODE_PRIVATE)
                         .edit()
-                        .putString(SHARED_PREF_USER_INFO_NAME, String.valueOf(mNameEditText.getText()));
+                        .putString(SHARED_PREF_USER_INFO_NAME, mNameEditText.getText().toString())
+                        .apply();
+
                 Intent gameActivityIntent=new Intent(MainActivity.this,GameActivity.class);
+
                 // startActivity(gameActivityIntent);
                 //Permet de recuperer le resultant d'une activité
 

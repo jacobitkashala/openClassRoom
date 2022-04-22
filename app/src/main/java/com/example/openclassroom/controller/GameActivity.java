@@ -45,6 +45,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private int mScore;
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(BUNDLE_STATE_SCORE,mScore);
+        outState.putInt(BUNDLE_STATE_QUESTION,mRemainingQuestionCount);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -57,17 +64,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         AnswerFourButton=findViewById(R.id.game_activity_button_4);
 
         mEnableTouchEvents=true;
-
         mRemainingQuestionCount=4;
         mScore=0;
-        /*
-        if(savedInstanceState==null){
-            mRemainingQuestionCount=savedInstanceState.getInt(BUNDLE_STATE_QUESTION);
-            mScore=savedInstanceState.getInt(BUNDLE_STATE_SCORE);
+
+        // System.out.println("SAVE  INStance " +savedInstanceState.getInt(BUNDLE_STATE_QUESTION));
+
+       if(savedInstanceState==null){
+            System.out.println("save rotate ");
+           mRemainingQuestionCount=4;
+           mScore=0;
         }else {
-            mRemainingQuestionCount=4;
-            mScore=0;
-        }*/
+           System.out.println("save no rotate ");
+
+           mRemainingQuestionCount = savedInstanceState.getInt(BUNDLE_STATE_QUESTION,4);
+           mScore=savedInstanceState.getInt(BUNDLE_STATE_SCORE,0);
+        }
 
         // Utilise le même écouteur pour les quatre boutons.
         // La valeur de l'identifiant de la vue sera utilisée pour distinguer le bouton déclenché
@@ -86,9 +97,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void displayQuestion(final Question question){
       /*
-*
-        mTextViewQuestion.setText("Question une");
-*/
+        *  mTextViewQuestion.setText("Question une");
+    */
         mTextViewQuestion.setText(question.getQuestion());
 
         AnswerOneButton.setText(question.getChoiceList().get(0));
@@ -98,12 +108,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(BUNDLE_STATE_SCORE,mScore);
-        outState.putInt(BUNDLE_STATE_QUESTION,mRemainingQuestionCount);
-    }
+
 
 
     @Override
