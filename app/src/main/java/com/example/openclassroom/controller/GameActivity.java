@@ -49,6 +49,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onSaveInstanceState(outState);
         outState.putInt(BUNDLE_STATE_SCORE,mScore);
         outState.putInt(BUNDLE_STATE_QUESTION,mRemainingQuestionCount);
+
+        System.out.println("Score"+mScore+"Question"+mRemainingQuestionCount);
+//System.out.println();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mScore= savedInstanceState.getInt(BUNDLE_STATE_SCORE,0);
+        mRemainingQuestionCount =savedInstanceState.getInt(BUNDLE_STATE_QUESTION,4);
     }
 
     @Override
@@ -97,8 +107,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private void displayQuestion(final Question question){
       /*
-        *  mTextViewQuestion.setText("Question une");
-    */
+       *  mTextViewQuestion.setText("Question une");
+      */
         mTextViewQuestion.setText(question.getQuestion());
 
         AnswerOneButton.setText(question.getChoiceList().get(0));
@@ -119,6 +129,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v ) {
         int index;
+        System.out.println("Score"+mScore+"Question"+mRemainingQuestionCount);
 
         if(v==AnswerOneButton){
             //System.out.println("0");
