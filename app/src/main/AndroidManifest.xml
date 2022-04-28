@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenClassRoom">
         <activity
+            android:name=".Controllers.Activites.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controllers.Activites.MainActivity"
             android:exported="true">
             <intent-filter>
