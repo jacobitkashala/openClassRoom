@@ -22,6 +22,7 @@
     layout_height="match_parent"
     android:name=".Controllers.Fragment.Main" /-->
 
+<!--La liaison se fait via l'attribut name fragment se pour cela qu'on l'appel l'ajout static-->
 <fragment
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
