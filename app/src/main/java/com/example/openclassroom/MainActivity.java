@@ -3,12 +3,17 @@ package com.example.openclassroom;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ImageView imageViewOC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         /*
         * une methode qui permet de faire la configuration
         */
+        this.configureToolbar();
         //2 - Serialise & confige imageView
         this.configureImageView();
     }
