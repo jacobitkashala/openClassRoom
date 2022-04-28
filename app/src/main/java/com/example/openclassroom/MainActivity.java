@@ -19,7 +19,29 @@ public class MainActivity extends AppCompatActivity {
         /*
         * une methode qui permet de faire la configuration
         */
-        this.configureToolbar();
+        //2 - Serialise & confige imageView
+        this.configureImageView();
+    }
+
+
+
+    private void configureImageView(){
+        // Serialise ImageView
+        this.imageViewOC = (ImageView) this.findViewById(R.id.imageView);
+        // Set OnClick Listener on it
+        imageViewOC.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                //Launch Detail Activity
+                launchDetailActivity();
+            }
+        });
+    }
+
+    // ----
+
+    private void launchDetailActivity(){
+        Intent myIntent = new Intent(MainActivity.this, DetailActivity.class);
+        this.startActivity(myIntent);
     }
 
     @Override
@@ -31,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void configureToolbar(){
         // Get the toolbar view inside the activity layout
-        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // Sets the Toolbar
         setSupportActionBar(toolbar);
     }
