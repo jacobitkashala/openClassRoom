@@ -8,13 +8,6 @@
     tools:context="com.example.openclassroom.MainActivity">
 
     <!-- Déclaration de notre Toolbar -->
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/activity_main_toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:titleTextColor="@android:color/white"
-        android:background="?attr/colorPrimary"/>
 
     <!-- Block 1 prenant la première moitié de l'écran (propriété layout_weight) -->
     <LinearLayout
