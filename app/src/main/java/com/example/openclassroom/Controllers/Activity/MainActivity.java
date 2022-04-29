@@ -1,8 +1,10 @@
-package com.example.openclassroom;
+package com.example.openclassroom.Controllers.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.openclassroom.R;
 
 public class MainActivity extends AppCompatActivity {
 
