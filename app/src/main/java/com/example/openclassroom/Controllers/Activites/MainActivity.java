@@ -2,6 +2,7 @@ package com.example.openclassroom.Controllers.Activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.onBu
     public void onButtonCliked(View view) {
         System.out.println("Clicked");
         //Log.e("tag","Cliked bton");
-        // startActivity(new Intent(this, DetailActivity.class));
+         startActivity(new Intent(this, DetailActivity.class));
 
     }
 }
