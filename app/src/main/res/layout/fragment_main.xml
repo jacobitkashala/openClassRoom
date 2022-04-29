@@ -12,6 +12,9 @@
         android:text="@string/hello_blank_fragment" /-->
 
 <!--/FrameLayout-->
+
+<!--Impementer une gros bouton sur l'interface->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,6 +31,50 @@
         android:text="SHOW ME DETAILS !"
         android:background="#00000000"
         android:textColor="#FFF"
-        android:textSize="30sp"/>
+        android:textSize="30sp"/-->
+
+<!--/LinearLayout-->
+    <!--Amelioration la stabilité lors de la rotation de l'application on creer Trois bton-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#D8DCF0">
+
+    <Button
+        android:id="@+id/fragment_main_button_happy"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Show happy detail !"
+        android:background="#C4C4C4"
+        android:textColor="#000000"
+        android:tag="10"
+        android:layout_marginBottom="16dp"
+        android:textSize="10sp"/>
+
+    <Button
+        android:id="@+id/fragment_main_button_horrible"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Show horrible detail !"
+        android:background="#C4C4C4"
+        android:textColor="#000000"
+        android:tag="20"
+        android:layout_marginBottom="16dp"
+        android:textSize="10sp"/>
+
+    <Button
+        android:id="@+id/fragment_main_button_sad"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Show sad detail !"
+        android:background="#C4C4C4"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000000"
+        android:tag="30"
+        android:textSize="10sp"/>
 
 </LinearLayout>

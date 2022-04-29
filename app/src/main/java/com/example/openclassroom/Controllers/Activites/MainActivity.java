@@ -14,21 +14,24 @@ public class MainActivity extends AppCompatActivity implements MainFragment.onBu
 
     private  MainFragment mainFragment;
     private DetailFragment detailFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        configureAndShowMainFragment();
-
-        configureAndShowDetailFragment();
+        this.configureAndShowMainFragment();
+        this.configureAndShowDetailFragment();
     }
 
     @Override
     public void onButtonCliked(View view) {
-        System.out.println("Clicked");
         //Log.e("tag","Cliked bton");
-         startActivity(new Intent(this, DetailActivity.class));
+        // System.out.println("Clicked");
+        // startActivity(new Intent(this, DetailActivity.class));
+
+        int buttonTag=Integer.parseInt(view.getTag().toString());
+        System.out.println(buttonTag);
 
     }
 

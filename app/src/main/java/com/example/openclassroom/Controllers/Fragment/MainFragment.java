@@ -84,8 +84,16 @@ public class MainFragment extends Fragment implements  View.OnClickListener{
         View result= inflater.inflate(R.layout.fragment_main, container, false);
        /*
        * On capte tout le click
-       * */
-        result.findViewById(R.id.fragment_main_button).setOnClickListener(this);
+       */
+       // result.findViewById(R.id.fragment_main_button).setOnClickListener(this);
+
+        /*
+        On recupre le btns de l'interface
+        */
+        result.findViewById(R.id.fragment_main_button_sad).setOnClickListener(this);
+        result.findViewById(R.id.fragment_main_button_happy).setOnClickListener(this);
+        result.findViewById(R.id.fragment_main_button_horrible).setOnClickListener(this);
+
         return result;
     }
 
