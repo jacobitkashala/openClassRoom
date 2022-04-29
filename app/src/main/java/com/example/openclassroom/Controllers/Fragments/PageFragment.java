@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.openclassroom.R;
 
@@ -22,6 +24,10 @@ public class PageFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private  static final String KEY_POSITION="position";
+    private  static final String KEY_COLOR="color";
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -29,16 +35,20 @@ public class PageFragment extends Fragment {
     public PageFragment() {
         // Required empty public constructor
     }
+    public static PageFragment newInstance(int position,int color){
+        PageFragment pageFragment =new PageFragment() ;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PageFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+        Bundle bundle=new Bundle();
+
+        bundle.putInt(KEY_POSITION,position);
+        bundle.putInt(KEY_COLOR,color);
+
+        pageFragment.setArguments(bundle);
+
+        return pageFragment;
+    }
+
+
     public static PageFragment newInstance(String param1, String param2) {
         PageFragment fragment = new PageFragment();
         Bundle args = new Bundle();
@@ -61,6 +71,18 @@ public class PageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_page, container, false);
+        //ceci est le fragment
+        View view= inflater.inflate(R.layout.fragment_page, container, false);
+
+        int color=getArguments().getInt(KEY_COLOR,-1);
+        int positon=getArguments().getInt(KEY_POSITION,-1);
+        TextView textView=(TextView)  view.findViewById(R.id.fragment_page_texview);
+        LinearLayout rootView=(LinearLayout)  view.findViewById(R.id.fragment_page_root_view);
+
+        rootView.setBackgroundColor(color);
+        textView.setText("Page numéro " +positon);
+
+
+        return rootView;
     }
 }
