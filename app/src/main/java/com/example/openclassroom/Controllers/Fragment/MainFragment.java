@@ -99,6 +99,8 @@ public class MainFragment extends Fragment implements  View.OnClickListener{
     public void onClick(View view) {
         mCallback.onButtonCliked(view);
     }
+
+
     private void createCallbackToParentActivity(){
         try {
             //Parent activity will automatically subscribe to callback
