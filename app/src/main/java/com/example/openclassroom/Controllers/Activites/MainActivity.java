@@ -31,7 +31,15 @@ public class MainActivity extends AppCompatActivity implements MainFragment.onBu
         // startActivity(new Intent(this, DetailActivity.class));
 
         int buttonTag=Integer.parseInt(view.getTag().toString());
-        System.out.println(buttonTag);
+        // System.out.println(buttonTag);
+        if(detailFragment != null && detailFragment.isVisible()){
+            detailFragment.updateTextView(buttonTag);
+        }else {
+            Intent intent=new Intent(this,DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_BUTTON_TAG,buttonTag);
+
+            startActivity(intent);
+        }
 
     }
 

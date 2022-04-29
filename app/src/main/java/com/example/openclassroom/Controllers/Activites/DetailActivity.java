@@ -10,6 +10,7 @@ import com.example.openclassroom.R;
 
 public class DetailActivity extends AppCompatActivity {
 
+    public static final String EXTRA_BUTTON_TAG = "EXTRA_BUTTON_TAG";
     private DetailFragment detailFragment;
 
     @Override
