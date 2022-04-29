@@ -19,7 +19,7 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.Fragment.MainFragment"
     android:gravity="center"
-    android:background="#D8DCF0">
+    android:background="#C4C4C4">
 
   <TextView
       android:id="@+id/fragment_layout_detail_textview"

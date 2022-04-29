@@ -2,6 +2,8 @@ package com.example.openclassroom.Controllers.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -23,7 +25,8 @@ public class DetailFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private TextView textView;
-
+    private  int buttoTage;
+    private  static final String KEY_BUTTON_TAG="com.example.openclassroom.Controllers.Fragment.DetailFragment.KEY_BUTTON_TAG";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -61,6 +64,27 @@ public class DetailFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_BUTTON_TAG,buttoTage);
+        // System.out.println("onsave "+buttoTage);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        //int buttonTagRestore=savedInstanceState.getInt(KEY_BUTTON_TAG,buttoTage);
+        // System.out.println("buttonTagRestore: "+buttonTagRestore);
+
+        if(savedInstanceState!=null){
+          //  int  buttonTagRestore=savedInstanceState.getInt(KEY_BUTTON_TAG,buttoTage);
+            int  buttonTagRestore=savedInstanceState.getInt(KEY_BUTTON_TAG,buttoTage);
+            this.updateTextView(2);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -74,6 +98,9 @@ public class DetailFragment extends Fragment {
 
     public void updateTextView(int buttonTag) {
         switch (buttonTag){
+            case 0:
+                this.textView.setText("O");
+                break;
             case 10:
                 this.textView.setText("10");
                 break;

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.onBu
         setContentView(R.layout.activity_main);
 
         this.configureAndShowMainFragment();
+
         this.configureAndShowDetailFragment();
     }
 
@@ -35,10 +36,10 @@ public class MainActivity extends AppCompatActivity implements MainFragment.onBu
         if(detailFragment != null && detailFragment.isVisible()){
             detailFragment.updateTextView(buttonTag);
         }else {
-            Intent intent=new Intent(this,DetailActivity.class);
-            intent.putExtra(DetailActivity.EXTRA_BUTTON_TAG,buttonTag);
-
-            startActivity(intent);
+            // System.out.println("Mode normal");
+             Intent intent=new Intent(this,DetailActivity.class);
+             intent.putExtra(DetailActivity.EXTRA_BUTTON_TAG,buttonTag);
+            // startActivity(new Intent(this, DetailActivity.class));
         }
 
     }
