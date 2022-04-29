@@ -7,6 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#FFFFFFFF</color>
     <!-- Array of colors that will be used by ViewPager as background colors -->
     <array name="colorPagesViewPager">
         <item>#EDD9CF</item>

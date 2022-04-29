@@ -1,6 +1,7 @@
 package com.example.openclassroom.Adapters;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -27,5 +28,10 @@ public class PageAdapter extends FragmentPagerAdapter {
         return (PageFragment.newInstance(position,this.colors[position]));
     }
 
-
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        // return super.getPageTitle(position);
+        return  "Page "+position;
+    }
 }

@@ -16,9 +16,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout-->
-
-<androidx.viewpager.widget.ViewPager
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main_view_pager"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!--1 add tab Layout to handle tabd-->
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/activity_main_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B6C9F1"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabTextColor="#D4E0F8"
+        app:tabSelectedTextColor="#fff"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/activity_main_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    </androidx.viewpager.widget.ViewPager>
+
+</LinearLayout>
